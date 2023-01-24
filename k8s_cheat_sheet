@@ -1,0 +1,108 @@
+minikube start --kubernetes-version v1.26.1
+
+kubectl get nodes
+
+minikube status 
+
+kubectl version --output=json
+
+brew install kubectx
+
+minikube addons enable ingress
+
+
+
+K8s commands
+
+start Minikube and check status
+
+minikube start --vm-driver=docker 
+minikube status
+
+get minikube node's ip address
+
+minikube ip
+
+Sample container deployment
+kubectl run mysite --image=capitainevigs/site --port=80
+kubectl port-forward pod/mysite 8191:80
+
+get all running pods (including systems pods)
+kubectl get pods -A
+
+SSH into master node
+minikube ssh 
+
+minikube stop
+
+minikube start --driver=docker
+
+minikube node add
+
+minikube ip --node minikube-m02
+
+minikube logs --node='minikube-m02'
+
+
+kubectl api-resources
+
+
+creating pod with imperative
+
+kubectl run mysite --image=capitainevigs/site --port=80
+kubectl port-forward pod/mysite 8191:80
+
+kubectl get namespace
+
+kubectl get all -n kube-system
+
+kubectl describe pod mysite
+
+kubectl get pod mysite -o wide
+
+kubectl logs mysite -f
+
+kubectl logs mysite -c mysite  (to get logs from the specific container)
+
+
+kubectl exec -it mysite -- sh
+
+kubectl exec -it mysite -c mysite -- sh (to get into a  specific container)
+
+kubectl get replicaset
+
+kubectl get deployment
+
+
+kubectl get pod -o wide (display pod ip address)
+
+
+
+get basic info about k8s components
+
+kubectl get node
+kubectl get pod
+kubectl get svc
+kubectl get all
+
+get extended info about components
+
+kubectl get pod -o wide
+kubectl get node -o wide
+
+get detailed info about a specific component
+
+kubectl describe svc {svc-name}
+kubectl describe pod {pod-name}
+
+get application logs
+
+kubectl logs {pod-name}
+
+stop your Minikube cluster
+
+minikube stop
+
+If you cannot access the NodePort service webapp with MinikubeIP:NodePort, execute the following command:
+
+minikube service webapp-service
